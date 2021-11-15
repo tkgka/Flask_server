@@ -2,7 +2,6 @@ from flask import Flask, request, render_template, redirect, url_for
 import flask
 import os
 import imgkit
-import json
 options = {
     'format': 'png',
     'height': 500, 
