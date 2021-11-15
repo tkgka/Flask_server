@@ -1,4 +1,4 @@
-wkhtmltopdf-pack==0.12.3.0 
+wkhtmltopdf-pack==0.12.6
 pdfkit==0.6.1
 aiohttp==3.6.3
 appnope==0.1.2
