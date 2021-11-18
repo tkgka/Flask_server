@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, redirect, url_for
 import flask
 import os
 import imgkit
+import ssl
 options = {
     'format': 'png',
     'height': 500, 
@@ -14,7 +15,7 @@ app = Flask(__name__)
 def fullurl():
     url = request.args.get('url')
     if url != None:
-        stream = os.popen('curl --head "'+url+'" | grep Location')
+        stream = os.popen('curl --head "'+url+'" | grep cation')
         output= flask.Response(stream.read())
         output.headers["Access-Control-Allow-Origin"] = "*"        
         return output
@@ -28,5 +29,6 @@ def img():
     return flask.Response(img, mimetype="image/png")
 
 if __name__ == "__main__":
-    app.debug = True
-    app.run()
+    ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
+    ssl_context.load_cert_chain(certfile='', keyfile='', password='louie')
+    app.run(host="0.0.0.0", port=443, ssl_context=ssl_context)
